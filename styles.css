@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap");
+
+:root {
+  --body-font: "Josefin Sans", sans-serif;
+  --gradient-base: oklch(22% 0.06 42);
+  --gradient-deep: oklch(32% 0.11 38);
+  --gradient-mid: oklch(48% 0.15 40);
+  --gradient-bright: oklch(62% 0.16 44);
+  --gradient-warm: oklch(58% 0.14 52);
+  --gradient-accent: oklch(52% 0.17 32);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: var(--body-font);
+}
+
+.main-container {
+  min-height: 100vh;
+}
+
+.info-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 4rem 10.2rem;
+  background-size: cover;
+}
+
+.site-header .logo {
+  display: block;
+  height: auto;
+  max-width: 193px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline;
+  color: white;
+  letter-spacing: 1.1rem;
+  line-height: 4.2rem;
+}
+
+h1 span {
+  color: white;
+  font-weight: 300;
+}
+
+.info-section p {
+  position: relative;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.8rem;
+  font-weight: 400;
+  width: 85%;
+  padding-top: 1.2rem;
+}
+
+.text-section {
+  max-width: 550px;
+}
+
+.gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -100;
+  background-color: var(--gradient-base);
+}
+
+.gradient-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    in oklch -45deg,
+    var(--gradient-deep) 0%,
+    var(--gradient-mid) 22%,
+    var(--gradient-bright) 45%,
+    var(--gradient-warm) 68%,
+    var(--gradient-accent) 85%,
+    var(--gradient-deep) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 50s ease infinite;
+}
+
+.gradient-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: oklch(26% 0.05 42 / 0.35);
+  pointer-events: none;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  .text-section {
+    position: absolute;
+    top: 50%;
+    left: 10.2rem;
+    transform: translateY(-50%);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .info-section {
+    padding: 5rem 2rem;
+  }
+
+  .text-section {
+    margin-top: 20%;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+}
